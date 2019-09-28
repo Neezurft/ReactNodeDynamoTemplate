@@ -1,0 +1,18 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+# Local dynamodb directories
+.dynamodb
+
+# JS outDir
+lib
+
+# privacy
+config.json

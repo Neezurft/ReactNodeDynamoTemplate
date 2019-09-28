@@ -1,0 +1,35 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Serverless template -> Node.js dynamodb",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local-test": "sls offline start --migrate",
+    "start-db": "sls dynamodb install",
+    "deploy": "sls deploy",
+    "remove": "sls remove"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.537.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-uuid": "^1.4.8",
+    "serverless-dynamodb-local": "^0.2.38",
+    "serverless-http": "^2.3.0",
+    "serverless-offline": "^5.11.0",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.1",
+    "@types/node": "^10.12.18",
+    "@types/node-uuid": "0.0.28",
+    "serverless-webpack": "^5.2.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0"
+  }
+}

@@ -1,0 +1,54 @@
+service: ${file(config.json):service-name}
+
+custom:
+  dynamodb:
+    stages:
+      - ${self:provider.stage}
+  tableName: "table-${self:provider.stage}"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${file(config.json):stage-name}
+  region: eu-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["NodeDynamoDBTable", "Arn"] }
+  environment:
+    TABLE_NAME: ${self:custom.tableName}
+
+functions:
+  node-dynamo-api:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
+
+resources:
+  Resources:
+    NodeDynamoDBTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.tableName}
+
+plugins:
+  - serverless-webpack
+  - serverless-dynamodb-local
+  - serverless-offline
