@@ -3,8 +3,9 @@ import * as express from "express";
 import * as AWS from "aws-sdk";
 import * as uuid from "node-uuid";
 import * as bodyParser from "body-parser";
-import * as config from "./config.json";
+import config from "./config.json";
 
+// const config = require("./config.json");
 const serverless = require("serverless-http");
 const app = express();
 const { "endpoint-prefix": prefix } = config;

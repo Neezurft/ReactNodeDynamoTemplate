@@ -11,8 +11,5 @@ jspm_packages
 # Local dynamodb directories
 .dynamodb
 
-# JS outDir
-lib
-
 # privacy
 config.json
