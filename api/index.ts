@@ -43,7 +43,7 @@ app.get(`/${prefix}`, (_req, res) => {
 
     const { Items: docs } = result;
     return res.json({
-      test: docs
+      docs
     });
   });
 });
