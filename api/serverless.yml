@@ -4,7 +4,7 @@ custom:
   dynamodb:
     stages:
       - ${self:provider.stage}
-  tableName: "table-${self:provider.stage}"
+  tableName: "${file(config.json):service-name}-${self:provider.stage}"
 
 provider:
   name: aws
