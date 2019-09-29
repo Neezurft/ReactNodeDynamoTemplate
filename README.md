@@ -21,6 +21,6 @@ now the stack should be ready to be deployed (AWS credentials need to be set up 
   `npm run start-db`
   `npm run local-test`
 
-  WEBAPP:
+WEBAPP:
 
-  - to be added
+- to be added
